@@ -16,7 +16,7 @@ jobs:
         command: |
           pip install poetry --user --upgrade
           poetry config virtualenvs.in-project true
-          poetry install
+          poetry install -E all
 
     - run:
         name: Run Tests
