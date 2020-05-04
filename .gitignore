@@ -1,0 +1,15 @@
+.venv/
+.idea/
+*.egg-info/
+/**/__pycache__/
+build/
+dist/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# coverage
+htmlcov/
+.coverage

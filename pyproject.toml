@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "flex-config"
+version = "1.0.0"
+description="Easily configure Python apps via defaults, environment variables, YAML, and AWS SSM Param Store."
+repository="https://github.com/triaxtec/flex-config"
+readme = "docs/README.md"
+packages = [
+    {include = "flex_config"}
+]
+authors = ["Dylan Anthony <danthony@triaxtec.com>"]
+include = ["CHANGELOG.md", "flex_config/py.typed"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+boto3 = {version = "^1.13.1", optional = true}
+pyyaml = {version = "^5.3.1", optional = true}
+
+[tool.poetry.extras]
+aws = ["boto3"]
+yaml = ["pyyaml"]
+all = ["boto3", "pyyaml"]
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "^2.8.1"
+mypy = "^0.770"
+taskipy = "^1.2.1"
+safety = "^1.9.0"
+black = "^19.10b0"
+isort = "^4.3.21"
+
+[tool.taskipy.tasks]
+check = "isort --recursive --apply && black . && safety check && mypy flex_config && pytest --cov flex_config"
+
+[tool.black]
+line-length = 120
+target_version = ['py38']
+exclude = '''
+(
+  /(
+    | \.git
+    | \.venv
+    | \.mypy_cache
+    | openapi_python_client/templates
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
