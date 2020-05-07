@@ -1,0 +1,51 @@
+site_name: flex-config
+site_description: Configure Python apps easily
+site_url: https://triaxtec.github.io/flex-config
+
+theme:
+    name: 'material'
+    palette:
+        primary: 'blue'
+        accent: 'green'
+    icon:
+        repo: fontawesome/brands/github-alt
+
+repo_name: triaxtec/flex-config
+repo_url: https://github.com/triaxtec/flex-config
+edit_uri: ''
+
+nav:
+    - Tutorial: 'README.md'
+    - Changelog: 'CHANGELOG.md'
+    - API:
+        FlexConfig: api/flex_config.md
+        ConfigSource: api/config_source.md
+        EnvSource: api/env_source.md
+        YAMLSource: api/yaml_source.md
+        AWSSource: api/aws_source.md
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    - markdown_include.include:
+        base_path: docs
+    - admonition
+    - codehilite:
+        linenums: true
+    - pymdownx.superfences
+
+plugins:
+    - search
+    - mkdocstrings:
+        default_handler: python
+        handlers:
+            python:
+                selection:
+                    filters:
+                        - "!^__"
+                rendering:
+                    show_source: true
+                    show_root_full_path: false
+        watch:
+            - flex_config
+

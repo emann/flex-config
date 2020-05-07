@@ -1,18 +1,27 @@
 import json
-from typing import Any, Dict, List, Optional, Set, Union
+from typing import Any, Dict, Optional, Set, Union, Iterable
 
-from .config_source import *
+from .config_source import ConfigSource
+from .aws_source import AWSSource
+from .env_source import EnvSource
+from .yaml_source import YAMLSource
 
 
 class FlexConfig(Dict[str, Any]):
-    """ Collects and provides access to config values """
+    """ Holds config values which can be loaded from many sources """
 
     def __init__(self, required: Set[str] = None) -> None:
         super().__init__()
         self.required: Optional[Set[str]] = required
 
-    def load_sources(self, config_sources: Union[List[ConfigSource], ConfigSource]) -> None:
-        """ Updates this object with the values from specified dict """
+    def load_sources(self, config_sources: Union[Iterable[ConfigSource], ConfigSource]) -> None:
+        """
+        Load the data from a [ConfigSource][flex_config.config_source.ConfigSource] or list thereof
+
+        Args:
+            config_sources: A Single or ConfigSource or Iterable of ConfigSources.
+        
+        """
         if not isinstance(config_sources, list):
             config_sources = [config_sources]
 
@@ -24,7 +33,8 @@ class FlexConfig(Dict[str, Any]):
         """
         Verify that all required attributes are set
 
-        :raises KeyError: If any required attribute is missing
+        Raises:
+            KeyError: If any required attribute is missing
         """
         if self.required is None:
             return
@@ -37,7 +47,9 @@ class FlexConfig(Dict[str, Any]):
     def flatten_dict(d: Dict[str, Any]) -> Dict[str, Any]:
         """
         Takes a dict with potentially nested values and returns a flat dict
-        :return: Flattened dictionary
+
+        Returns:
+            Flattened dictionary
         """
 
         keys = list(d.keys())  # can't be an iterator because we're modifying in this loop
