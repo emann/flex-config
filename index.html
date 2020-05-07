@@ -254,7 +254,7 @@ to install optional dependencies. The easiest way is to <code>poetry install fle
 sources (not all), then look at the API docs for that particular source to see what if any optional dependency you need.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 </span>
@@ -303,7 +303,7 @@ sources (not all), then look at the API docs for that particular source to see w
 </ol>
 <p>Now let's take a look at <em>where</em> we are loading the config from that ends up in <code>_app_config</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 
@@ -346,7 +346,7 @@ sources (not all), then look at the API docs for that particular source to see w
 <p>Sources passed into <a href="api/flex_config/#flex_config.FlexConfig.load_sources">load_sources</a> are loaded <strong>in order</strong>. So in our case, we pass in <code>default_config</code> first so that
  every source we load later overrides it.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 </span>
@@ -389,7 +389,7 @@ sources (not all), then look at the API docs for that particular source to see w
  load your entire application's config from <a href="api/env_source/">EnvSource</a> if you wanted to, say, load a bunch of stuff from AWS Secrets
  manager into environment variables at boot up.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 </span>
@@ -429,7 +429,7 @@ sources (not all), then look at the API docs for that particular source to see w
 <p>Next up is a <a href="api/yaml_source/">YAMLSource</a>. Commonly we use this to store local config when developing since setting up environment
  variables or SSM config is cumbersome for values that may change frequently.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 
@@ -469,7 +469,7 @@ sources (not all), then look at the API docs for that particular source to see w
 <p>In this case, we're also allowing users to provide an "override" param which we will load last. This pattern makes
  testing and loading config for CLIs much easier.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
 </span>

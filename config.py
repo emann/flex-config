@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict, Optional, Any
+from typing import Any, Dict, Optional
 
 from flex_config import AWSSource, EnvSource, FlexConfig, YAMLSource
 
