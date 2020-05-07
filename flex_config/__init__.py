@@ -1,8 +1,8 @@
 import json
-from typing import Any, Dict, Optional, Set, Union, Iterable
+from typing import Any, Dict, Iterable, Optional, Sequence, Set, Union
 
-from .config_source import ConfigSource
 from .aws_source import AWSSource
+from .config_source import ConfigSource
 from .env_source import EnvSource
 from .yaml_source import YAMLSource
 
@@ -14,7 +14,7 @@ class FlexConfig(Dict[str, Any]):
         super().__init__()
         self.required: Optional[Set[str]] = required
 
-    def load_sources(self, config_sources: Union[Iterable[ConfigSource], ConfigSource]) -> None:
+    def load_sources(self, config_sources: Union[Sequence[ConfigSource], ConfigSource]) -> None:
         """
         Load the data from a [ConfigSource][flex_config.config_source.ConfigSource] or list thereof
 
@@ -22,7 +22,8 @@ class FlexConfig(Dict[str, Any]):
             config_sources: A Single or ConfigSource or Iterable of ConfigSources.
         
         """
-        if not isinstance(config_sources, list):
+
+        if not isinstance(config_sources, Sequence):
             config_sources = [config_sources]
 
         for source in config_sources:

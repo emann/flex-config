@@ -32,6 +32,7 @@ class AWSSource(ConfigSource):
 
     def __init__(self, path: str, **kwargs: Any) -> None:
         import boto3
+
         self.ssm = boto3.client("ssm", "us-east-1", **kwargs)
         self.path = path
 

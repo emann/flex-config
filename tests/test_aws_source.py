@@ -3,14 +3,14 @@ from flex_config import AWSSource
 
 class TestAWSSource:
     def test___init__(self, mocker):
-        fake_boto3 = mocker.patch("flex_config.config_source.aws_source.boto3")
+        import boto3
 
         def _client(service, region, **kwargs):
             client_data = {"service": service, "region": region}
             client_data.update(kwargs)
             return client_data
 
-        fake_boto3.client = _client
+        mocker.patch.object(boto3, "client", _client)
 
         awss = AWSSource("path", test_param="test")
 
@@ -22,14 +22,14 @@ class TestAWSSource:
         }
 
     def test_items(self, mocker):
-        fake_boto3 = mocker.patch("flex_config.config_source.aws_source.boto3")
+        import boto3
 
         fake_ssm = mocker.MagicMock()
 
         def _client(*_, **__):
             return fake_ssm
 
-        fake_boto3.client = _client
+        mocker.patch.object(boto3, "client", _client)
 
         responses = [
             {"Parameters": [{"Name": "/path/a", "Value": 1}, {"Name": "/path/a/b/c", "Value": 2}], "NextToken": "yes"},

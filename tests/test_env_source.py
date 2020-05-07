@@ -9,7 +9,7 @@ class TestEnvSource:
         assert envs.separator == "t"
 
     def test_items(self, mocker):
-        fake_os = mocker.patch("flex_config.config_source.env_source.os")
+        fake_os = mocker.patch("flex_config.env_source.os")
 
         responses = {
             "SOMETHING_ELSE": 42,
