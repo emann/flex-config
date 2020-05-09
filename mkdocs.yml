@@ -15,7 +15,8 @@ repo_url: https://github.com/triaxtec/flex-config
 edit_uri: ''
 
 nav:
-    - Tutorial: 'README.md'
+    - Intro: 'README.md'
+    - Tutorial: 'tutorial.md'
     - Changelog: 'CHANGELOG.md'
     - API:
         FlexConfig: api/flex_config.md

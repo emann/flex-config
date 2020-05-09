@@ -1,101 +1,40 @@
 # Flex Config
+[![triaxtec](https://circleci.com/gh/triaxtec/flex-config.svg?style=svg)](https://app.circleci.com/pipelines/github/triaxtec/flex-config?branch=master)
 [![codecov](https://codecov.io/gh/triaxtec/flex-config/branch/master/graph/badge.svg?token=3utvPfZSLB)](https://codecov.io/gh/triaxtec/flex-config)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Generic badge](https://img.shields.io/badge/type_checked-mypy-informational.svg)](https://mypy.readthedocs.io/en/stable/introduction.html)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-If you are not reading this from the [hosted documentation] I recommend you switch over to that for the best viewing
- experience.
 
-FlexConfig is designed specifically to make configuring web apps as easy as possible on AWS. A similar pattern is followed 
-whether deploying to EC2, ECS, or Lambda. Ultimately, FlexConfig is a glorified dict that makes loading from multiple 
-sources easy, and provides some simple path-like lookup features.
+Configure your applications as easily as possible.
 
+## Main Features
+### Load config from wherever
+1. Comes with built in support for loading from dicts, environment variables, YAML files, and AWS SSM Parameter Store.
+2. Super easy to set up a custom source and load from anywhere.
+
+### Path-like lookups for nested values
 ```python
 from flex_config import FlexConfig
 
 flex_config = FlexConfig()
-# In FlexConfig, these two are equivalent
-flex_config["app"]["env"] == flex_config["app/env"]
+flex_config["app/env"] = "local"
+assert flex_config["app"]["env"] == "local"
+assert flex_config["app/env"] == "local"
 ```
+
+### Basic type inference
+If the value FlexConfig gets is a string (like you get from SSM and Env), it will try to parse it to a few other types.
+1. Strings that are digits become ints
+1. Numbers with decimals `.` become floats
+1. Strings contained with `{` and `}` will be parsed as JSON
+1. Failing any of the above you just get your string back
 
 ## Installation
 Basic install: `poetry install flex_config`
 With all optional dependencies: `poetry install flex_config -E all`
 
-## Walkthrough
-We'll use a simplified version of the `config.py` included in our 
-[fastapi-serverless-cookiecutter](https://triaxtec.github.io/fastapi-serverless-cookiecutter/) for illustration.
+For a full tutorial and API docs, check out the [hosted documentation]
 
-Everything is based around the [FlexConfig] class, that is what will store all of your config. Generally you want to
- create *one* of these and load its details only at startup, then reuse the same instance throughout the application.
- 
-!!!warning
-    In the below example we use all of the sources that come with flex_config. If you want to use all of them, you have 
-    to install optional dependencies. The easiest way is to `poetry install flex_config -E all`. If you only need specific 
-    sources (not all), then look at the API docs for that particular source to see what if any optional dependency you need.
-
-```python hl_lines="4 6 15 17 19 20 25 37"
-{!./config.py!}
-```
-
-In the highlighted code, we:
-
-1. `import FlexConfig`
-2. Declare a private global instance called `_app_config`, defaulting to `None`.
-3. Declare a function called `get_config`. This is how every other part of the app will get the config.
-4. Use the global `_app_config` locally in our function.
-5. Return the global `_app_config` if it's already been set. This prevents us re-loading the config.
-6. If `_app_config` hasn't been set up yet, we set it to a brand new [FlexConfig].
-7. Return our loaded up config object.
-
-Now let's take a look at *where* we are loading the config from that ends up in `_app_config`.
-
-
-```python hl_lines="10 11 12 26 27 31"
-{!./config.py!}
-```
-
-We have some defaults set in the code itself. Here this is a simple `dict` which very intentionally conforms to the 
- [ConfigSource] Protocol which is required for anything passed into [load_sources]. If you have a lot of defaults, you
- may want to use a [YAMLSource] instead.
- 
-Sources passed into [load_sources] are loaded **in order**. So in our case, we pass in `default_config` first so that
- every source we load later overrides it.
- 
-```python hl_lines="4 26 28 31"
-{!./config.py!}
-```
-
-Next, we're including an [EnvSource] to load values from environment variables. Usually, this source is used to load
- just enough info to be able to load from other sources. In the case of our serverless applications (where this was 
- taken from), we load the "env" config value to tell us which environment this is running in (e.g. "dev"). You could
- load your entire application's config from [EnvSource] if you wanted to, say, load a bunch of stuff from AWS Secrets
- manager into environment variables at boot up.
- 
-```python hl_lines="4 26 29 31"
-{!./config.py!}
-```
-
-Next up is a [YAMLSource]. Commonly we use this to store local config when developing since setting up environment
- variables or SSM config is cumbersome for values that may change frequently.
-
-```python hl_lines="15 26 30 31"
-{!./config.py!}
-```
-
-In this case, we're also allowing users to provide an "override" param which we will load last. This pattern makes
- testing and loading config for CLIs much easier.
- 
-```python hl_lines="4 33 34 35"
-{!./config.py!}
-```
-
-Finally, we're going to check which environment we're running in (loaded by all the previous sources). If we're not
- running locally, we load the rest of our config from AWS SSM. In this case, we've stored that info under the prefix 
- "app/env" (e.g. "app/dev") though there is no limit to the length of the prefix nor the number of AWS sources you 
- can load from.
 
 [hosted documentation]: https://triaxtec.github.io/flex-config
-[FlexConfig]: api/flex_config.md
-[load_sources]: api/flex_config.md#flex_config.FlexConfig.load_sources
-[ConfigSource]: api/config_source.md
-[YAMLSource]: api/yaml_source.md
-[EnvSource]: api/env_source.md
