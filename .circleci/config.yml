@@ -2,8 +2,18 @@ version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
 
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: gh-pages
+
+
 jobs:
-  build:
+  test:
     docker:
     - image: circleci/python:3.8
     steps:
