@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict, Iterable, Optional, Sequence, Set, Union
+from typing import Any, Dict, Optional, Sequence, Set, Union
 
 from .aws_source import AWSSource
 from .config_source import ConfigSource
@@ -20,7 +20,7 @@ class FlexConfig(Dict[str, Any]):
 
         Args:
             config_sources: A Single or ConfigSource or Iterable of ConfigSources.
-        
+
         """
 
         if not isinstance(config_sources, Sequence):
@@ -69,11 +69,10 @@ class FlexConfig(Dict[str, Any]):
         elif value.startswith("{") and value.endswith("}"):
             return json.loads(value)
         elif "." in value:
-            # noinspection PyBroadException
             # Test to see if this value is a float
             try:
                 return float(value)
-            except:
+            except Exception:
                 pass
         return value
 

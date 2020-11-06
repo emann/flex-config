@@ -25,7 +25,12 @@ class TestFlexConfig:
 
     def test_flatten_dict(self):
         d = {
-            "a": {"c": 1, "d": {"e": 3,},},
+            "a": {
+                "c": 1,
+                "d": {
+                    "e": 3,
+                },
+            },
             "b": 2,
         }
         assert FlexConfig.flatten_dict(d) == {"a/c": 1, "a/d/e": 3, "b": 2}
