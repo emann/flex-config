@@ -34,7 +34,7 @@ def _compile_sources(sources: Union[Sequence[ConfigSource], ConfigSource]) -> Di
 ConfigClass = TypeVar("ConfigClass")
 
 
-def construct_flex_config(
+def construct_config(
     config_schema: Type[ConfigClass], sources: Union[Sequence[ConfigSource], ConfigSource]
 ) -> ConfigClass:
     if not isinstance(config_schema, ConfigSchema):
