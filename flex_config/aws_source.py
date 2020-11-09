@@ -1,6 +1,7 @@
 from typing import Any, Dict, Generator, Tuple
 
 from .config_source import ConfigSource
+from .utils import top_level_key_and_nested_subkey_dict
 
 
 class AWSSource(ConfigSource):
@@ -45,8 +46,8 @@ class AWSSource(ConfigSource):
             )
 
             for param in result["Parameters"]:
-                key = param["Name"].replace(f"/{self.path}/", "")  # Don't repeat SSM path in key
-                yield key, param["Value"]
+                path = param["Name"].replace(f"/{self.path}/", "")  # Don't repeat SSM path in key
+                yield top_level_key_and_nested_subkey_dict(subkeys=path.split("/"), value=param["Value"])
 
             kwargs["NextToken"] = result.get("NextToken")
             if kwargs["NextToken"] is None:  # That's the last of the values

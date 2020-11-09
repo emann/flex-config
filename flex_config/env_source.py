@@ -2,6 +2,7 @@ import os
 from typing import Any, Generator, Tuple
 
 from .config_source import ConfigSource
+from .utils import top_level_key_and_nested_subkey_dict
 
 
 class EnvSource(ConfigSource):
@@ -36,9 +37,11 @@ class EnvSource(ConfigSource):
         self.separator = separator
 
     def items(self) -> Generator[Tuple[str, Any], None, None]:
-        """ Returns a generator for getting all path, value pairs """
+        """ Returns a generator for getting all key, value pairs """
         for key, value in os.environ.items():
             if not key.startswith(self.prefix):
                 continue
-            key = key.replace(self.prefix, "").replace(self.separator, "/").lower()
-            yield key, value
+            if self.separator not in key:
+                yield key, value
+            else:
+                yield top_level_key_and_nested_subkey_dict(subkeys=key.split("."), value=value)
