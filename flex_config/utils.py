@@ -12,5 +12,6 @@ def insert_value_at_nested_key(dest_dict: Dict[str, Any], subkey_path: List[str]
 
 class Environment(Enum):
     LIVE = "live"
-    DEV = "dev"
     SANDBOX = "sandbox"
+    DEV = "dev"
+    LOCAL = "local"
