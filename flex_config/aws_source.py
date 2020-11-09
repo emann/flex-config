@@ -1,7 +1,7 @@
-from typing import Any, Dict, Generator, Tuple
+from typing import Any, Dict, Iterable, Tuple
 
 from .config_source import ConfigSource
-from .utils import top_level_key_and_nested_subkey_dict
+from .utils import insert_value_at_nested_key
 
 
 class AWSSource(ConfigSource):
@@ -37,9 +37,10 @@ class AWSSource(ConfigSource):
         self.ssm = boto3.client("ssm", "us-east-1", **kwargs)
         self.path = path
 
-    def items(self) -> Generator[Tuple[str, Any], None, None]:
+    def to_dict(self) -> Dict[str, Any]:
         """ Returns a generator for getting all path, value pairs """
         kwargs: Dict[str, Any] = {}
+        param_dict: Dict[str, Any] = {}
         while True:
             result = self.ssm.get_parameters_by_path(
                 Path=f"/{self.path}/", Recursive=True, WithDecryption=True, **kwargs
@@ -47,8 +48,13 @@ class AWSSource(ConfigSource):
 
             for param in result["Parameters"]:
                 path = param["Name"].replace(f"/{self.path}/", "")  # Don't repeat SSM path in key
-                yield top_level_key_and_nested_subkey_dict(subkeys=path.split("/"), value=param["Value"])
+                insert_value_at_nested_key(dest_dict=param_dict, subkey_path=path.split("/"), value=param["Value"])
 
             kwargs["NextToken"] = result.get("NextToken")
             if kwargs["NextToken"] is None:  # That's the last of the values
                 break
+        return param_dict
+
+    def items(self) -> Iterable[Tuple[str, Any]]:
+        """ Returns a generator for getting all path, value pairs """
+        return self.to_dict().items()

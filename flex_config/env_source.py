@@ -1,8 +1,8 @@
 import os
-from typing import Any, Generator, Tuple
+from typing import Any, Dict, Iterable, Tuple
 
 from .config_source import ConfigSource
-from .utils import top_level_key_and_nested_subkey_dict
+from .utils import insert_value_at_nested_key
 
 
 class EnvSource(ConfigSource):
@@ -36,12 +36,16 @@ class EnvSource(ConfigSource):
         self.prefix = prefix
         self.separator = separator
 
-    def items(self) -> Generator[Tuple[str, Any], None, None]:
+    def to_dict(self) -> Dict[str, Any]:
         """ Returns a generator for getting all key, value pairs """
+        param_dict: Dict[str, Any] = {}
         for key, value in os.environ.items():
             if not key.startswith(self.prefix):
                 continue
-            if self.separator not in key:
-                yield key, value
-            else:
-                yield top_level_key_and_nested_subkey_dict(subkeys=key.split("."), value=value)
+            key = key.replace(self.prefix, "")
+            insert_value_at_nested_key(dest_dict=param_dict, subkey_path=key.split(self.separator), value=value)
+        return param_dict
+
+    def items(self) -> Iterable[Tuple[str, Any]]:
+        """ Returns a generator for getting all key, value pairs """
+        return self.to_dict().items()

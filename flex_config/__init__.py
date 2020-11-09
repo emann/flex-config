@@ -9,12 +9,12 @@ from .env_source import EnvSource
 from .yaml_source import YAMLSource
 
 
-def _merge_dicts(dest: Dict[str, Any], source: ConfigSource) -> None:
+def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> None:
     """Merge the values in the source into the destination dictionary"""
     for key, val in source.items():
         if isinstance(val, dict):
             if key in dest:
-                _merge_dicts(dest[key], val)
+                _merge_sources(dest[key], val)
             else:
                 dest[key] = val.copy()
         else:
@@ -27,7 +27,7 @@ def _compile_sources(sources: Union[Sequence[ConfigSource], ConfigSource]) -> Di
 
     compiled: Dict[str, Any] = {}
     for source in sources:
-        _merge_dicts(dest=compiled, source=source)
+        _merge_sources(dest=compiled, source=source)
     return compiled
 
 
