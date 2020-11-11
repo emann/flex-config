@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flex-config"
-version = "1.0.0"
+version = "2.0.0-alpha.0"
 description="Easily configure Python apps via environment variables, YAML, and AWS SSM Param Store."
 repository="https://github.com/triaxtec/flex-config"
 documentation="https://triaxtec.github.io/flex-config"
