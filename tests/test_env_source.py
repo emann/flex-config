@@ -1,31 +1,43 @@
 from flex_config import EnvSource
 
 
-class TestEnvSource:
-    def test___init__(self):
-        envs = EnvSource("PRE_", separator="t")
+def test___init__():
+    envs = EnvSource("PRE_", separator="t")
 
-        assert envs.prefix == "PRE_"
-        assert envs.separator == "t"
+    assert envs.prefix == "PRE_"
+    assert envs.separator == "t"
 
-    def test_items(self, mocker):
-        fake_os = mocker.patch("flex_config.env_source.os")
 
-        responses = {
-            "SOMETHING_ELSE": 42,
-            "PRE_BLAH": 16,
-            "PRE_BLAHtBLAH": 36,
+def test_to_dict(mocker):
+    fake_os = mocker.patch("flex_config.env_source.os")
+
+    responses = {
+        "SOMETHING_ELSE": 42,
+        "PRE_BLAHtBLAHtBLAH": 38,
+        "PRE_BLAHtBLAHtBLAM": 39,
+        "PRE_BLAHtBLAM": 7,
+    }
+
+    fake_os.environ = responses
+
+    envs = EnvSource("PRE_", separator="t")
+
+    assert envs.to_dict() == {
+        "blah": {
+            "blah": {
+                "blah": 38,
+                "blam": 39,
+            },
+            "blam": 7,
         }
+    }
 
-        fake_os.environ = responses
 
-        envs = EnvSource("PRE_", separator="t")
+def test_items(mocker):
+    envs = EnvSource("PRE_", separator="t")
 
-        results = {}
-        for key, value in envs.items():
-            results[key] = value
+    to_dict_return = {1: 2, 3: 4, 5: 6}
+    to_dict = mocker.patch.object(envs, "to_dict", return_value=to_dict_return)
 
-        assert results == {
-            "blah": 16,
-            "blah/blah": 36,
-        }
+    assert envs.items() == to_dict_return.items()
+    to_dict.assert_called_once()

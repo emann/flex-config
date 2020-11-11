@@ -22,7 +22,14 @@ class TestYAMLSource:
         assert yamls.items() == [], "items() failed when YAML file didn't exist"
 
         with path.open("w") as test_yaml_file:
-            test_yaml_file.write(yaml.dump({"blah": 16, "blah/blah": 36,}))
+            test_yaml_file.write(
+                yaml.dump(
+                    {
+                        "blah": 16,
+                        "blah/blah": 36,
+                    }
+                )
+            )
 
         results = {}
         for key, value in yamls.items():

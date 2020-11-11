@@ -22,6 +22,9 @@ classifiers = [
 python = "^3.8"
 boto3 = {version = "^1.13.1", optional = true}
 pyyaml = {version = "^5.3.1", optional = true}
+flake8 = "^3.8.4"
+autoflake = "^1.4"
+pydantic = "^1.7.2"
 
 [tool.poetry.extras]
 aws = ["boto3"]
@@ -32,18 +35,26 @@ all = ["boto3", "pyyaml"]
 pytest = "*"
 pytest-mock = "*"
 pytest-cov = "^2.8.1"
-mypy = "^0.770"
-taskipy = "^1.2.1"
-safety = "^1.9.0"
-black = "^19.10b0"
-isort = "^4.3.21"
+mypy = "==0.*"
+safety = "*"
+black = {version = ">=20.8b1", allow-prereleases = true}
+taskipy = "^1.4.0"
+isort = "^5.6.4"
 mkdocs = "^1.1"
 mkdocs-material = "^5.1.5"
 markdown-include = "^0.5.1"
 mkdocstrings = "^0.11.0"
 
 [tool.taskipy.tasks]
-check = "isort --recursive --apply && black . && safety check && mypy flex_config && pytest --cov flex_config"
+check = """
+    autoflake -i -r --expand-star-imports --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports flex_config\
+    && isort .\
+    && black .\
+    && flake8 flex_config\
+    && poetry export -f requirements.txt | poetry run safety check --bare --stdin\
+    && mypy flex_config \
+    && pytest --cov=flex_config --cov-report=term-missing
+"""
 
 [tool.black]
 line-length = 120
@@ -62,6 +73,7 @@ exclude = '''
 
 [tool.isort]
 line_length = 120
+skip = ".venv"
 multi_line_output = 3
 include_trailing_comma = true
 
