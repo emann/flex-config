@@ -43,6 +43,11 @@ def test__compile_sources(mocker):
         merge_sources.assert_any_call(dest=mocker.ANY, source=source_dict)
     assert merge_sources.call_count == 3
 
+    source = mocker.Mock()
+    mocker.patch("flex_config.isinstance", return_value=True)
+    assert _compile_sources([source]) == {"banana": "phone"}
+    source.dict.assert_called_once()
+
 
 def test_construct_config(mocker):
     sources = [{}, {}, {}]

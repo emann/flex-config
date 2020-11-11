@@ -22,13 +22,18 @@ def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> Dict[str, Any]
     return dest
 
 
-def _compile_sources(sources: Union[Sequence[ConfigSource], ConfigSource]) -> Dict[str, Any]:
+def _compile_sources(
+    sources: Union[Sequence[Union[ConfigSource, ConfigSchema]], ConfigSource, ConfigSchema]
+) -> Dict[str, Any]:
     if not isinstance(sources, Sequence):
         sources = [sources]
 
     compiled: Dict[str, Any] = {}
     for source in sources:
-        compiled = _merge_sources(dest=compiled, source=source)
+        if isinstance(source, ConfigSchema):
+            compiled = _merge_sources(dest=compiled, source=source.dict())
+        else:
+            compiled = _merge_sources(dest=compiled, source=source)
     return compiled
 
 
@@ -36,7 +41,8 @@ ConfigClass = TypeVar("ConfigClass")
 
 
 def construct_config(
-    config_schema: Type[ConfigClass], sources: Union[Sequence[ConfigSource], ConfigSource]
+    config_schema: Type[ConfigClass],
+    sources: Union[Sequence[Union[ConfigSource, ConfigClass]], ConfigSource, ConfigClass],
 ) -> ConfigClass:
     if not isinstance(config_schema, ConfigSchema):
         raise TypeError("Config schema supplied isn't a subclass of ConfigSchema (aka Pydantic's BaseModel)")
