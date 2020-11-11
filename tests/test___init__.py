@@ -32,13 +32,13 @@ def test__compile_sources(mocker):
     d2 = {"other": "stuff"}
     d3 = {"super": "unique"}
 
-    merge_sources = mocker.patch("flex_config._merge_sources")
+    merge_sources = mocker.patch("flex_config._merge_sources", return_value={"banana": "phone"})
 
-    assert _compile_sources(d1) == {}
+    assert _compile_sources(d1) == {"banana": "phone"}
     merge_sources.assert_called_once_with(dest=mocker.ANY, source=d1)
     merge_sources.reset_mock()
 
-    assert _compile_sources([d1, d2, d3]) == {}
+    assert _compile_sources([d1, d2, d3]) == {"banana": "phone"}
     for source_dict in [d1, d2, d3]:
         merge_sources.assert_any_call(dest=mocker.ANY, source=source_dict)
     assert merge_sources.call_count == 3

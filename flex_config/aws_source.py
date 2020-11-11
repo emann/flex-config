@@ -48,7 +48,9 @@ class AWSSource(ConfigSource):
 
             for param in result["Parameters"]:
                 path = param["Name"].replace(f"/{self.path}/", "")  # Don't repeat SSM path in key
-                insert_value_at_nested_key(dest_dict=param_dict, subkey_path=path.split("/"), value=param["Value"])
+                param_dict = insert_value_at_nested_key(
+                    dest_dict=param_dict, subkey_path=path.split("/"), value=param["Value"]
+                )
 
             kwargs["NextToken"] = result.get("NextToken")
             if kwargs["NextToken"] is None:  # That's the last of the values

@@ -1,4 +1,4 @@
-__all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource", "Environment"]
+__all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource"]
 from typing import Any, Dict, Sequence, Type, TypeVar, Union
 
 from pydantic import BaseModel as ConfigSchema
@@ -7,10 +7,9 @@ from .aws_source import AWSSource
 from .config_source import ConfigSource
 from .env_source import EnvSource
 from .yaml_source import YAMLSource
-from .utils import Environment
 
 
-def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> None:
+def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> Dict[str, Any]:
     """Merge the values in the source into the destination dictionary"""
     for key, val in source.items():
         if isinstance(val, dict):
@@ -20,6 +19,7 @@ def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> None:
                 dest[key] = val.copy()
         else:
             dest[key] = val
+    return dest
 
 
 def _compile_sources(sources: Union[Sequence[ConfigSource], ConfigSource]) -> Dict[str, Any]:
@@ -28,7 +28,7 @@ def _compile_sources(sources: Union[Sequence[ConfigSource], ConfigSource]) -> Di
 
     compiled: Dict[str, Any] = {}
     for source in sources:
-        _merge_sources(dest=compiled, source=source)
+        compiled = _merge_sources(dest=compiled, source=source)
     return compiled
 
 

@@ -37,7 +37,7 @@ pytest-mock = "*"
 pytest-cov = "^2.8.1"
 mypy = "==0.*"
 safety = "*"
-black = {version = ">=19.10b0", allow-prereleases = true}
+black = {version = ">=20.8b1", allow-prereleases = true}
 taskipy = "^1.4.0"
 isort = "^5.6.4"
 mkdocs = "^1.1"
@@ -47,7 +47,7 @@ mkdocstrings = "^0.11.0"
 
 [tool.taskipy.tasks]
 check = """
-    autoflake -i -r --expand-star-imports --remove-all-unused-imports --remove-unused-variables flex_config\
+    autoflake -i -r --expand-star-imports --remove-all-unused-imports --remove-unused-variables --ignore-init-module-imports flex_config\
     && isort .\
     && black .\
     && flake8 flex_config\

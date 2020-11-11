@@ -43,7 +43,9 @@ class EnvSource(ConfigSource):
             if not key.startswith(self.prefix):
                 continue
             key = key.replace(self.prefix, "")
-            insert_value_at_nested_key(dest_dict=param_dict, subkey_path=key.split(self.separator), value=value)
+            param_dict = insert_value_at_nested_key(
+                dest_dict=param_dict, subkey_path=key.split(self.separator), value=value
+            )
         return param_dict
 
     def items(self) -> Iterable[Tuple[str, Any]]:
