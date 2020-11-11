@@ -14,7 +14,7 @@ def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> Dict[str, Any]
     for key, val in source.items():
         if isinstance(val, dict):
             if key in dest:
-                _merge_sources(dest[key], val)
+                dest[key] = _merge_sources(dest[key], val)
             else:
                 dest[key] = val.copy()
         else:
