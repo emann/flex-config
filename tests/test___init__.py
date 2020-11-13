@@ -58,11 +58,12 @@ def test__compile_sources(mocker):
 
 def test_construct_config(mocker):
     sources = [{}, {}, {}]
+    mocker.patch("flex_config.issubclass", return_value=False)
     with pytest.raises(TypeError):
         construct_config(config_schema={}, sources=sources)
 
     compile_sources = mocker.patch("flex_config._compile_sources", return_value={"compiled": "sources"})
-    mocker.patch("flex_config.isinstance", return_value=True)
+    mocker.patch("flex_config.issubclass", return_value=True)
     config_schema = mocker.Mock()
 
     construct_config(config_schema=config_schema, sources=sources)

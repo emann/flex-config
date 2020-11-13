@@ -1,5 +1,5 @@
 __all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource"]
-from typing import Any, Callable, Dict, Sequence, Type, TypeVar, Union
+from typing import Any, Callable, Dict, Sequence, Type, TypeVar, Union, cast
 
 from pydantic import BaseModel as ConfigSchema
 
@@ -42,7 +42,7 @@ ConfigClass = TypeVar("ConfigClass")
 def construct_config(
     config_schema: Type[ConfigClass], sources: Union[Sequence[_SourceTypes], _SourceTypes]
 ) -> ConfigClass:
-    if not isinstance(config_schema, ConfigSchema):
+    if not issubclass(config_schema, ConfigSchema):
         raise TypeError("Config schema supplied isn't a subclass of ConfigSchema (aka Pydantic's BaseModel)")
     compiled_config_dict = _compile_sources(sources=sources)
-    return config_schema(**compiled_config_dict)
+    return cast(ConfigClass, config_schema(**compiled_config_dict))
