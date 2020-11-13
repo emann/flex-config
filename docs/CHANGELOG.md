@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Thanks to pydantic's built in data validation/conversion, the structure of the config and the types of it values are
     now strictly enforced so you can be sure that if your program starts without any validation errors the config is
     correctly built and all data types match what they are expected to be.
+- Support for using a callable that takes in the compiled dictionary thus far and returns a ConfigSource as a source when
+    constructing a config.
 
 ## 1.0.0 - 2020-05-09
 Initial release
