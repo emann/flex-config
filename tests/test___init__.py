@@ -28,20 +28,32 @@ def test__merge_sources():
 
 
 def test__compile_sources(mocker):
-    d1 = {"key": "val"}
-    d2 = {"other": "stuff"}
-    d3 = {"super": "unique"}
+    s1 = {"key": "val"}
+    s2 = {"other": "stuff"}
+    s3 = {"super": "unique"}
+    s4 = mocker.Mock(return_value={"dynamic": "source1"})
 
-    merge_sources = mocker.patch("flex_config._merge_sources", return_value={"banana": "phone"})
+    def _mock_merge_sources(dest, source):
+        dest = dest.copy()
+        dest.update(source)
+        return dest
 
-    assert _compile_sources(d1) == {"banana": "phone"}
-    merge_sources.assert_called_once_with(dest=mocker.ANY, source=d1)
-    merge_sources.reset_mock()
+    mocker.patch("flex_config._merge_sources", _mock_merge_sources)
 
-    assert _compile_sources([d1, d2, d3]) == {"banana": "phone"}
-    for source_dict in [d1, d2, d3]:
-        merge_sources.assert_any_call(dest=mocker.ANY, source=source_dict)
-    assert merge_sources.call_count == 3
+    assert _compile_sources(s1) == s1
+
+    assert _compile_sources([s1, s2, s3, s4]) == {
+        "key": "val",
+        "other": "stuff",
+        "super": "unique",
+        "dynamic": "source1",
+    }
+    expected_s4_param = {
+        "key": "val",
+        "other": "stuff",
+        "super": "unique",
+    }
+    s4.assert_called_with(expected_s4_param)
 
 
 def test_construct_config(mocker):
