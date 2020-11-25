@@ -677,7 +677,7 @@ toml = ">=0.10.0,<0.11.0"
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
@@ -737,7 +737,7 @@ yaml = ["pyyaml"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9ac9e555dfadc511facd7aa8be55a9e8802608bcef929bbf6ac1a122c46b533b"
+content-hash = "6849c41d912cba1c2dc175702acdd533b24f69c3f3f4c03d1b4cc33cfc9c7482"
 
 [metadata.files]
 appdirs = [

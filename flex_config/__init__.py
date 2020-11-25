@@ -1,4 +1,4 @@
-__all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource"]
+__all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource", "TOMLSource", "JSONSource"]
 from typing import Any, Callable, Dict, Sequence, Type, TypeVar, Union, cast
 
 from pydantic import BaseModel as ConfigSchema
@@ -6,7 +6,7 @@ from pydantic import BaseModel as ConfigSchema
 from .aws_source import AWSSource
 from .config_source import ConfigSource
 from .env_source import EnvSource
-from .yaml_source import YAMLSource
+from .file_sources import JSONSource, TOMLSource, YAMLSource
 
 _SourceTypes = Union[ConfigSource, Callable[[Dict[str, Any]], ConfigSource]]
 
