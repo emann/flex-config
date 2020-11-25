@@ -12,13 +12,16 @@ class FileSource(ConfigSource):
     Args:
         path (pathlib.Path): a [pathlib.Path](https://docs.python.org/3/library/pathlib.html#basic-use) to a file
             (of a supported type) to load.
-        path_must_exist (bool): if true, the constructor will raise a RuntimeError if the provided path doesn't exist.
+        path_must_exist (bool): Enforce that the passed path must exist. If not, default to empty source.
+        
+    Raises:
+        FileExistsError: If path_must_exist is true but the path does not exist
     """
 
     def __init__(self, path: Path, path_must_exist: bool = False) -> None:
         super().__init__()
         if path_must_exist and not path.exists():
-            raise RuntimeError(f'Config file at "{path}" does not exist!')
+            raise FileExistsError(f'Config file at "{path}" does not exist!')
         self.path = path
 
     def _load_file(self, file: TextIO) -> Dict[str, Any]:

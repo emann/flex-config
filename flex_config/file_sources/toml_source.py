@@ -13,7 +13,7 @@ class TOMLSource(FileSource):
         (e.g. `poetry install flex-config -E toml`).
 
     Args:
-        path (pathlib.Path): a [pathlib.Path](https://docs.python.org/3/library/pathlib.html#basic-use) to a YAML file
+        path (pathlib.Path): a [pathlib.Path](https://docs.python.org/3/library/pathlib.html#basic-use) to a TOML file
             to load.
         path_must_exist (bool): if true, the constructor will raise a RuntimeError if the provided path doesn't exist.
 
