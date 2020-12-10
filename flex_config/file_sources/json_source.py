@@ -17,13 +17,12 @@ class JSONSource(FileSource):
         from pathlib import Path
         from flex_config import JSONSource, ConfigSchema, construct_config
 
-        my_json_file = Path("path/to/my.json")
-        json_source = JSONSource(my_json_file)
         class MyConfigSchema(ConfigSchema):
             thing1: str
             thing2: int
 
-        my_config = load_sources(config_schema=MyConfigSchema, sources=json_source)
+        my_json_file = Path("path/to/my.json")
+        my_config = load_sources(config_schema=MyConfigSchema, sources=JSONSource(my_json_file))
         ```
     """
 

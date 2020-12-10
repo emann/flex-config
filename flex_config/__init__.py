@@ -25,6 +25,7 @@ def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> Dict[str, Any]
 
 
 def _compile_sources(sources: Union[Sequence[_SourceTypes], _SourceTypes]) -> Dict[str, Any]:
+    """Compiles the sources passed into a single dictionary"""
     if not isinstance(sources, Sequence):
         sources = [sources]
 
@@ -42,6 +43,22 @@ ConfigClass = TypeVar("ConfigClass")
 def construct_config(
     config_schema: Type[ConfigClass], sources: Union[Sequence[_SourceTypes], _SourceTypes]
 ) -> ConfigClass:
+    """Loads values from the sources passed in (in order) and creates an instance of the config schema specified.
+
+    Args:
+        config_schema: a subclass of ConfigSchema (or Pydantic's BaseModel) to validate config values with
+        sources: A list of ConfigSources to be loaded and merged in the order they were passed in
+
+    Returns:
+        An instance of the config schema passed in containing values loaded (in order) from the sources passed in
+
+    Raises:
+        TypeError: If config_schema passed in is not a subclass of ConfigSchema (which is just a renamed and re-exported
+            [pydantic.BaseModel](https://pydantic-docs.helpmanual.io/usage/models/#basic-model-usage) which you could
+            subclass instead if you already have it imported)
+        ValidationError: If there are issues validating the compiled config values e.g. missing values or values that
+            couldn't be converted to their specified type
+    """
     if not issubclass(config_schema, ConfigSchema):
         raise TypeError("Config schema supplied isn't a subclass of ConfigSchema (aka Pydantic's BaseModel)")
     compiled_config_dict = _compile_sources(sources=sources)

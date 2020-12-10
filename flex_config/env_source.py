@@ -19,15 +19,16 @@ class EnvSource(ConfigSource):
 
     Example:
         ```python
-        from flex_config import EnvSource, FlexConfig
+        from flex_config import EnvSource, ConfigSchema, construct_config
 
-        # Say you have APP_ENV and APP_DATABASE.URL as environment variables
-        env_source = EnvSource("APP_")
-        my_config = FlexConfig()
-        my_config.load_sources(env_source)
-        assert "env" in my_config
-        assert "database" in my_config
-        assert "url" in my_config["database"]
+        class MyConfigSchema(ConfigSchema):
+            thing1: str
+            thing2: int
+
+        # Say you have APP_ENV="live" and APP_DATABASE.URL="my_database_url" as environment variables
+        my_config = load_sources(config_schema=MyConfigSchema, sources=EnvSource("APP_"))
+        assert my_config.env = "live"
+        assert my_config.database.url = "my_database_url"
         ```
 
     """
