@@ -22,7 +22,7 @@ class JSONSource(FileSource):
             thing2: int
 
         my_json_file = Path("path/to/my.json")
-        my_config = load_sources(config_schema=MyConfigSchema, sources=JSONSource(my_json_file))
+        my_config = construct_config(config_schema=MyConfigSchema, sources=JSONSource(my_json_file))
         ```
     """
 

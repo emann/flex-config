@@ -9,7 +9,7 @@ We'll use a simplified version of the `config.py` included in our
     
 ## Creating a FlexConfig
 
-Everything is based around Pydantic's Basemodel, which we subclass and add fields to that are then populated from one or
+Everything is based around Pydantic's `BaseModel`, which we subclass and add fields to that are then populated from one or
 more [ConfigSource]s. Generally you want to create *one* of these and load its details only at startup, then reuse the
 same instance throughout the application.
 

@@ -27,7 +27,7 @@ class YAMLSource(FileSource):
             thing2: int
 
         my_yaml_file = Path("path/to/my.yaml")
-        my_config = load_sources(config_schema=MyConfigSchema, sources=YAMLSource(my_yaml_file))
+        my_config = construct_config(config_schema=MyConfigSchema, sources=YAMLSource(my_yaml_file))
         ```
     """
 

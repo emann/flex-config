@@ -26,7 +26,7 @@ class EnvSource(ConfigSource):
             thing2: int
 
         # Say you have APP_ENV="live" and APP_DATABASE.URL="my_database_url" as environment variables
-        my_config = load_sources(config_schema=MyConfigSchema, sources=EnvSource("APP_"))
+        my_config = construct_config(config_schema=MyConfigSchema, sources=EnvSource("APP_"))
         assert my_config.env = "live"
         assert my_config.database.url = "my_database_url"
         ```

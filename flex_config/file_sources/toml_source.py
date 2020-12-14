@@ -27,7 +27,7 @@ class TOMLSource(FileSource):
             thing2: int
 
         my_toml_file = Path("path/to/my.toml")
-        my_config = load_sources(config_schema=MyConfigSchema, sources=TOMLSource(my_toml_file))
+        my_config = construct_config(config_schema=MyConfigSchema, sources=TOMLSource(my_toml_file))
         ```
 
     """
