@@ -8,16 +8,16 @@
 <meta content="Configure Python apps easily" name="description"/>
 <link href="https://triaxtec.github.io/flex-config/tutorial/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="shortcut icon"/>
-<meta content="mkdocs-1.1, mkdocs-material-5.1.6" name="generator"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-5.5.14" name="generator"/>
 <title>Tutorial - flex-config</title>
-<link href="../assets/stylesheets/main.4b9ffd7b.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.b79bcd20.min.css" rel="stylesheet"/>
-<meta content="#2196f3" name="theme-color"/>
+<link href="../assets/stylesheets/main.d3202873.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ff0a5ce4.min.css" rel="stylesheet"/>
+<meta content="#2094f3" name="theme-color"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
 <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
 </head>
-<body data-md-color-accent="green" data-md-color-primary="blue" dir="ltr">
+<body data-md-color-accent="green" data-md-color-primary="blue" data-md-color-scheme="" dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
@@ -121,18 +121,14 @@
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
         Tutorial
-        <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"></path></svg>
-</span>
+        <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./" title="Tutorial">
       Tutorial
     </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
 <ul class="md-nav__list" data-md-scrollfix="">
@@ -158,8 +154,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#yaml-or-json-files">
-    YAML (or JSON) Files
+<a class="md-nav__link" href="#yaml-or-json-or-toml-files">
+    YAML (or JSON or TOML) Files
   </a>
 </li>
 <li class="md-nav__item">
@@ -168,8 +164,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#aws-ssm-parameter-store">
-    AWS SSM Parameter Store
+<a class="md-nav__link" href="#dynamically-loading-sources">
+    Dynamically loading sources
   </a>
 </li>
 </ul>
@@ -187,41 +183,62 @@
 <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" id="nav-4" type="checkbox"/>
 <label class="md-nav__link" for="nav-4">
       API
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="API" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="nav-4">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+<span class="md-nav__icon md-icon"></span>
         API
       </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../api/flex_config/" title="FlexConfig">
-      FlexConfig
+<a class="md-nav__link" href="../docs/construct_config.md" title="construct_config">
+      construct_config
     </a>
 </li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" id="nav-5" type="checkbox"/>
+<label class="md-nav__link" for="nav-5">
+      Config Sources
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Config Sources" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="nav-5">
+<span class="md-nav__icon md-icon"></span>
+        Config Sources
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../api/config_source/" title="ConfigSource">
+<a class="md-nav__link" href="../ConfigSources/config_source/" title="ConfigSource">
       ConfigSource
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../api/env_source/" title="EnvSource">
+<a class="md-nav__link" href="../ConfigSources/env_source/" title="EnvSource">
       EnvSource
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../api/yaml_source/" title="YAMLSource">
-      YAMLSource
+<a class="md-nav__link" href="../ConfigSources/aws_source/" title="AWSSource">
+      AWSSource
     </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../api/aws_source/" title="AWSSource">
-      AWSSource
+<a class="md-nav__link" href="../ConfigSources/FileSources/json_source/" title="JSONSource">
+      JSONSource
+    </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ConfigSources/FileSources/toml_source/" title="TOMLSource">
+      TOMLSource
+    </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ConfigSources/FileSources/yaml_source/" title="YAMLSource">
+      YAMLSource
     </a>
 </li>
 </ul>
@@ -237,9 +254,7 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+<span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
 <ul class="md-nav__list" data-md-scrollfix="">
@@ -265,8 +280,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#yaml-or-json-files">
-    YAML (or JSON) Files
+<a class="md-nav__link" href="#yaml-or-json-or-toml-files">
+    YAML (or JSON or TOML) Files
   </a>
 </li>
 <li class="md-nav__item">
@@ -275,8 +290,8 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#aws-ssm-parameter-store">
-    AWS SSM Parameter Store
+<a class="md-nav__link" href="#dynamically-loading-sources">
+    Dynamically loading sources
   </a>
 </li>
 </ul>
@@ -299,15 +314,38 @@ to install optional dependencies. The easiest way is to <code>poetry install fle
 sources (not all), then look at the API docs for that particular source to see what if any optional dependency you need.</p>
 </div>
 <h2 id="creating-a-flexconfig">Creating a FlexConfig<a class="headerlink" href="#creating-a-flexconfig" title="Permanent link">¶</a></h2>
-<p>Everything is based around the <a href="../api/flex_config/">FlexConfig</a> class, that is what will store all of your config. Generally you want to
- create <em>one</em> of these and load its details only at startup, then reuse the same instance throughout the application.</p>
+<p>Everything is based around Pydantic's <code>BaseModel</code>, which we subclass and add fields to that are then populated from one or
+more <a href="../ConfigSources/config_source/">ConfigSource</a>s. Generally you want to create <em>one</em> of these and load its details only at startup, then reuse the
+same instance throughout the application.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 </span>
-<span class="hll"><span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
@@ -315,8 +353,12 @@ sources (not all), then look at the API docs for that particular source to see w
 <span class="p">}</span>
 
 
-<span class="hll"><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-</span>    <span class="sd">""" Get the app config for this  """</span>
+<span class="hll"><span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+
+<span class="hll"><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+</span>    <span class="sd">""" Get the app config for this app """</span>
 <span class="hll">    <span class="k">global</span> <span class="n">_app_config</span>
 </span>
 <span class="hll">    <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -325,28 +367,27 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-</span>    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-        <span class="n">default_config</span><span class="p">,</span>
-        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-        <span class="n">override</span><span class="p">,</span>
-    <span class="p">])</span>
-
-    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+</span>        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">default_config</span><span class="p">,</span>
+            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+            <span class="n">get_ssm_params</span><span class="p">,</span>
+            <span class="n">override</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
 
 <span class="hll">    <span class="k">return</span> <span class="n">_app_config</span>
 </span></code></pre></div>
 <p>In the highlighted code, we:</p>
 <ol>
-<li><code>import FlexConfig</code></li>
+<li>Import <code>construct_config, ConfigSchema</code> and the <code>ConfigSource</code>s that we want to use</li>
 <li>Declare a private global instance called <code>_app_config</code>, defaulting to <code>None</code>.</li>
 <li>Declare a function called <code>get_config</code>. This is how every other part of the app will get the config.</li>
 <li>Use the global <code>_app_config</code> locally in our function.</li>
 <li>Return the global <code>_app_config</code> if it's already been set. This prevents us re-loading the config.</li>
-<li>If <code>_app_config</code> hasn't been set up yet, we set it to a brand new <a href="../api/flex_config/">FlexConfig</a>.</li>
+<li>If <code>_app_config</code> hasn't been set up yet, we construct a brand new instance of our <code>Config</code> class via <a href="../construct_config/">construct_config</a>.</li>
 <li>Return our loaded up config object.</li>
 </ol>
 <h2 id="loading-sources">Loading Sources<a class="headerlink" href="#loading-sources" title="Permanent link">¶</a></h2>
@@ -355,10 +396,32 @@ sources (not all), then look at the API docs for that particular source to see w
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
+<span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 
-<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="hll"><span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
@@ -366,8 +429,12 @@ sources (not all), then look at the API docs for that particular source to see w
 </span><span class="hll"><span class="p">}</span>
 </span>
 
-<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-    <span class="sd">""" Get the app config for this  """</span>
+<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+
+<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="sd">""" Get the app config for this app """</span>
     <span class="k">global</span> <span class="n">_app_config</span>
 
     <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -376,38 +443,59 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-<span class="hll">    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-</span><span class="hll">        <span class="n">default_config</span><span class="p">,</span>
-</span>        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-        <span class="n">override</span><span class="p">,</span>
-<span class="hll">    <span class="p">])</span>
-</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+</span>        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+<span class="hll">        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+</span><span class="hll">            <span class="n">default_config</span><span class="p">,</span>
+</span>            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+            <span class="n">get_ssm_params</span><span class="p">,</span>
+            <span class="n">override</span><span class="p">,</span>
+<span class="hll">        <span class="p">],</span>
+</span>    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_app_config</span>
 </code></pre></div>
 <p>We have some defaults set in the code itself. Here this is a simple <code>dict</code> which very intentionally conforms to the 
- <a href="../api/config_source/">ConfigSource</a> Protocol which is required for anything passed into <a href="../api/flex_config/#flex_config.FlexConfig.load_sources">load_sources</a>. If you have a lot of defaults, you
- may want to use a <a href="../api/yaml_source/">YAMLSource</a> instead.</p>
-<p>Sources passed into <a href="../api/flex_config/#flex_config.FlexConfig.load_sources">load_sources</a> are loaded <strong>in order</strong>. So in our case, we pass in <code>default_config</code> first so that
+ <a href="../ConfigSources/config_source/">ConfigSource</a> Protocol which is required for anything passed into <a href="../construct_config/">construct_config</a>. If you have a lot of defaults, you
+ may want to use a <a href="../ConfigSources/FileSources/yaml_source/">YAMLSource</a> instead.</p>
+<p>Sources passed into [load_sources] are loaded <strong>in order</strong>. So in our case, we pass in <code>default_config</code> first so that
  every source we load later overrides it.</p>
 <h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">¶</a></h3>
-<p>We're including an <a href="../api/env_source/">EnvSource</a> to load values from environment variables. Usually, this source is used to load
+<p>We're including an <a href="../ConfigSources/env_source/">EnvSource</a> to load values from environment variables. Usually, this source is used to load
  just enough info to be able to load from other sources. In the case of our serverless applications (where this was 
  taken from), we load the "env" config value to tell us which environment this is running in (e.g. "dev"). You could
- load your entire application's config from <a href="../api/env_source/">EnvSource</a> if you wanted to, say, load a bunch of stuff from AWS Secrets
+ load your entire application's config from <a href="../ConfigSources/env_source/">EnvSource</a> if you wanted to, say, load a bunch of stuff from AWS Secrets
  manager into environment variables at boot up.
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 </span>
-<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
@@ -415,8 +503,12 @@ sources (not all), then look at the API docs for that particular source to see w
 <span class="p">}</span>
 
 
-<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-    <span class="sd">""" Get the app config for this  """</span>
+<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+
+<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="sd">""" Get the app config for this app """</span>
     <span class="k">global</span> <span class="n">_app_config</span>
 
     <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -425,31 +517,52 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-<span class="hll">    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-</span>        <span class="n">default_config</span><span class="p">,</span>
-<span class="hll">        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-</span>        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-        <span class="n">override</span><span class="p">,</span>
-<span class="hll">    <span class="p">])</span>
-</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+</span>        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">default_config</span><span class="p">,</span>
+<span class="hll">            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+</span>            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+            <span class="n">get_ssm_params</span><span class="p">,</span>
+            <span class="n">override</span><span class="p">,</span>
+<span class="hll">        <span class="p">],</span>
+</span>    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_app_config</span>
 </code></pre></div></p>
-<h3 id="yaml-or-json-files">YAML (or JSON) Files<a class="headerlink" href="#yaml-or-json-files" title="Permanent link">¶</a></h3>
-<p>Next up is a <a href="../api/yaml_source/">YAMLSource</a>. Commonly we use this to store local config when developing since setting up environment
- variables or SSM config is cumbersome for values that may change frequently. Note that YAML is a <a href="https://yaml.org/spec/1.2/spec.html#id2759572">superset of JSON</a> so
- you can also provide a JSON file here if you prefer.</p>
+<h3 id="yaml-or-json-or-toml-files">YAML (or JSON or TOML) Files<a class="headerlink" href="#yaml-or-json-or-toml-files" title="Permanent link">¶</a></h3>
+<p>Next up is a <a href="../ConfigSources/FileSources/yaml_source/">YAMLSource</a>. Commonly we use this to store local config when developing since setting up environment
+ variables or SSM config is cumbersome for values that may change frequently. The pattern shown is the same for a 
+ <a href="../ConfigSources/FileSources/json_source/">JSONSource</a> or <a href="../ConfigSources/FileSources/toml_source/">TOMLSource</a> - a path to the respective type is passed in and the rest is handled for you. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 </span>
-<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 
 <span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
@@ -457,8 +570,12 @@ sources (not all), then look at the API docs for that particular source to see w
 <span class="p">}</span>
 
 
-<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-    <span class="sd">""" Get the app config for this  """</span>
+<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="hll"><span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+</span>
+
+<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="sd">""" Get the app config for this app """</span>
     <span class="k">global</span> <span class="n">_app_config</span>
 
     <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -467,17 +584,16 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-<span class="hll">    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-</span>        <span class="n">default_config</span><span class="p">,</span>
-        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-<span class="hll">        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-</span>        <span class="n">override</span><span class="p">,</span>
-<span class="hll">    <span class="p">])</span>
-</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+</span>        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">default_config</span><span class="p">,</span>
+            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+<span class="hll">            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+</span>            <span class="n">get_ssm_params</span><span class="p">,</span>
+            <span class="n">override</span><span class="p">,</span>
+<span class="hll">        <span class="p">],</span>
+</span>    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_app_config</span>
 </code></pre></div>
@@ -487,19 +603,45 @@ sources (not all), then look at the API docs for that particular source to see w
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
-
-<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+<span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 
 
-<span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+<span class="hll">    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+</span>
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+<span class="hll">    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+</span>    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="hll">
+</span><span class="hll">
+</span><span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"env"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
 <span class="p">}</span>
 
 
-<span class="hll"><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-</span>    <span class="sd">""" Get the app config for this  """</span>
+<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+
+<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="sd">""" Get the app config for this app """</span>
     <span class="k">global</span> <span class="n">_app_config</span>
 
     <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -508,41 +650,68 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-<span class="hll">    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-</span>        <span class="n">default_config</span><span class="p">,</span>
-        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-<span class="hll">        <span class="n">override</span><span class="p">,</span>
-</span><span class="hll">    <span class="p">])</span>
-</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">default_config</span><span class="p">,</span>
+            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+            <span class="n">get_ssm_params</span><span class="p">,</span>
+            <span class="n">override</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">_app_config</span>
 </code></pre></div></p>
-<h3 id="aws-ssm-parameter-store">AWS SSM Parameter Store<a class="headerlink" href="#aws-ssm-parameter-store" title="Permanent link">¶</a></h3>
-<p>Finally, we're going to check which environment we're running in (loaded by all the previous sources). If we're not
- running locally, we load the rest of our config from AWS SSM. In this case, we've stored that info under the prefix 
- "app/env" (e.g. "app/dev") though there is no limit to the length of the prefix nor the number of AWS sources you 
- can load from.
+<h3 id="dynamically-loading-sources">Dynamically loading sources<a class="headerlink" href="#dynamically-loading-sources" title="Permanent link">¶</a></h3>
+<p>Finally, we're going to advantage of the fact that we can pass in a callable that takes in the dictionry of compiled
+ values so far and returns a <a href="../ConfigSources/config_source/">ConfigSource</a>. Our function checks which environment we're running in (based on the 
+ values loaded from the sources we've loaded so far). If we're not running locally, we return an [AWSSource] and load
+ the rest of our config from AWS SSM. In this case, we've stored the values in SSM under the prefix "app/env"
+ (e.g. "app/dev") though there is no limit to the length of the prefix nor the number of AWS sources you can load from.
+ If we are running locally, <code>get_ssm_params</code> just returns an empty dictionary as there is nothing more to load.
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">FlexConfig</span><span class="p">,</span> <span class="n">YAMLSource</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">flex_config</span> <span class="kn">import</span> <span class="n">AWSSource</span><span class="p">,</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">ConfigSource</span><span class="p">,</span> <span class="n">EnvSource</span><span class="p">,</span> <span class="n">YAMLSource</span><span class="p">,</span> <span class="n">construct_config</span>
 </span>
-<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FlexConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
 
+<span class="k">class</span> <span class="nc">DataBaseConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">SentryConfig</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">traces_sample_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+
+<span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">ConfigSchema</span><span class="p">):</span>
+    <span class="n">env</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">special_number</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">database</span><span class="p">:</span> <span class="n">DataBaseConfig</span>
+    <span class="n">sentry</span><span class="p">:</span> <span class="n">SentryConfig</span>
+
+
+<span class="hll"><span class="k">def</span> <span class="nf">get_ssm_params</span><span class="p">(</span><span class="n">config_so_far</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ConfigSource</span><span class="p">:</span>
+</span><span class="hll">    <span class="n">env</span> <span class="o">=</span> <span class="n">config_so_far</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"env"</span><span class="p">)</span>
+</span><span class="hll">    <span class="k">if</span> <span class="n">env</span> <span class="o">==</span> <span class="s2">"local"</span><span class="p">:</span>
+</span><span class="hll">        <span class="k">return</span> <span class="p">{}</span>
+</span><span class="hll">    <span class="k">return</span> <span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"my_app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span>
 
 <span class="n">default_config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">"env"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">,</span>
 <span class="p">}</span>
 
 
-<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FlexConfig</span><span class="p">:</span>
-    <span class="sd">""" Get the app config for this  """</span>
+<span class="n">_app_config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">yaml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">"config.yml"</span>
+
+
+<span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="n">override</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="sd">""" Get the app config for this app """</span>
     <span class="k">global</span> <span class="n">_app_config</span>
 
     <span class="k">if</span> <span class="n">_app_config</span><span class="p">:</span>
@@ -551,18 +720,17 @@ sources (not all), then look at the API docs for that particular source to see w
     <span class="k">if</span> <span class="ow">not</span> <span class="n">override</span><span class="p">:</span>
         <span class="n">override</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">FlexConfig</span><span class="p">()</span>
-    <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">([</span>
-        <span class="n">default_config</span><span class="p">,</span>
-        <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"APP_"</span><span class="p">),</span>
-        <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
-        <span class="n">override</span><span class="p">,</span>
-    <span class="p">])</span>
+<span class="hll">    <span class="n">_app_config</span> <span class="o">=</span> <span class="n">construct_config</span><span class="p">(</span>
+</span>        <span class="n">config_schema</span><span class="o">=</span><span class="n">Config</span><span class="p">,</span>
+        <span class="n">sources</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">default_config</span><span class="p">,</span>
+            <span class="n">EnvSource</span><span class="p">(</span><span class="s2">"CAT_"</span><span class="p">),</span>
+            <span class="n">YAMLSource</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">),</span>
+<span class="hll">            <span class="n">get_ssm_params</span><span class="p">,</span>
+</span>            <span class="n">override</span><span class="p">,</span>
+<span class="hll">        <span class="p">],</span>
+</span>    <span class="p">)</span>
 
-<span class="hll">    <span class="n">env</span> <span class="o">=</span> <span class="n">_app_config</span><span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
-</span><span class="hll">    <span class="k">if</span> <span class="n">env</span> <span class="o">!=</span> <span class="s2">"local"</span><span class="p">:</span>
-</span><span class="hll">        <span class="n">_app_config</span><span class="o">.</span><span class="n">load_sources</span><span class="p">(</span><span class="n">AWSSource</span><span class="p">(</span><span class="sa">f</span><span class="s2">"app/</span><span class="si">{</span><span class="n">env</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
-</span>
     <span class="k">return</span> <span class="n">_app_config</span>
 </code></pre></div></p>
 </article>
@@ -613,14 +781,14 @@ sources (not all), then look at the API docs for that particular source to see w
 </div>
 </footer>
 </div>
-<script src="../assets/javascripts/vendor.a0c4167b.min.js"></script>
-<script src="../assets/javascripts/bundle.fb26dd1d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+<script src="../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+<script src="../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
 <script>
         app = initialize({
           base: "..",
           features: [],
           search: Object.assign({
-            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+            worker: "../assets/javascripts/worker/search.5eca75d3.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
