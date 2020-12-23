@@ -1,0 +1,28 @@
+name: Run Checks
+
+on:
+  push:
+    paths-ignore:
+    - docs/**
+    - mkdocs.yml
+    branches-ignore:
+    - gh-pages
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - uses: actions/cache@v2
+      with:
+        path: .venv
+        key: v1-dependencies-${{ hashFiles('poetry.lock') }}
+        restore-keys: v1-dependencies-
+    - uses: triaxtec/github-actions/python/install-and-configure-poetry
+    - uses: triaxtec/github-actions/python/run-checks
+      with:
+        module: flex_config
