@@ -67,7 +67,7 @@ Next up is a [YAMLSource]. Commonly we use this to store local config when devel
 ### Overriding
 In this case, we're also allowing users to provide an "override" param which we will load last. This pattern makes
  testing and loading config for CLIs much easier.
-```python hl_lines="15 26 30 31"
+```python hl_lines="41 48 49 53 58 59"
 {!./config.py!}
 ```
 
