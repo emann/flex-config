@@ -19,11 +19,14 @@ nav:
     - Tutorial: 'tutorial.md'
     - Changelog: 'CHANGELOG.md'
     - API:
-        FlexConfig: ConfigSources/flex_config.md
+        construct_config: construct_config.md
+    - "Config Sources":
         ConfigSource: ConfigSources/config_source.md
         EnvSource: ConfigSources/env_source.md
-        YAMLSource: ConfigSources/yaml_source.md
         AWSSource: ConfigSources/aws_source.md
+        JSONSource: ConfigSources/FileSources/json_source.md
+        TOMLSource: ConfigSources/FileSources/toml_source.md
+        YAMLSource: ConfigSources/FileSources/yaml_source.md
 
 markdown_extensions:
     - toc:
