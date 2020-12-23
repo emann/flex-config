@@ -22,14 +22,12 @@ class TOMLSource(FileSource):
         from pathlib import Path
         from flex_config import TOMLSource, ConfigSchema, construct_config
 
-        my_toml_file = Path("path/to/my.toml")
-        toml_source = TOMLSource(my_toml_file)
-
         class MyConfigSchema(ConfigSchema):
             thing1: str
             thing2: int
 
-        my_config = load_sources(config_schema=MyConfigSchema, sources=toml_source)
+        my_toml_file = Path("path/to/my.toml")
+        my_config = construct_config(config_schema=MyConfigSchema, sources=TOMLSource(my_toml_file))
         ```
 
     """

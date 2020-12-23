@@ -22,11 +22,13 @@ class AWSSource(ConfigSource):
 
     Example:
         ```python
-        from flex_config import AWSSource, FlexConfig
+        from flex_config import AWSSource, FlexConfig, construct_config
 
-        aws_source = AWSSource(f"my_app/dev")
-        my_config = FlexConfig()
-        my_config.load_sources(aws_source)
+        class MyConfigSchema(ConfigSchema):
+            thing1: str
+            thing2: int
+
+        my_config = construct_config(config_schema=MyConfigSchema, sources=AWSSource(f"my_app/dev"))
         ```
 
     """

@@ -22,13 +22,12 @@ class YAMLSource(FileSource):
         from pathlib import Path
         from flex_config import YAMLSource, ConfigSchema, construct_config
 
-        my_yaml_file = Path("path/to/my.yaml")
-        yaml_source = YAMLSource(my_yaml_file)
         class MyConfigSchema(ConfigSchema):
             thing1: str
             thing2: int
 
-        my_config = load_sources(config_schema=MyConfigSchema, sources=yaml_source)
+        my_yaml_file = Path("path/to/my.yaml")
+        my_config = construct_config(config_schema=MyConfigSchema, sources=YAMLSource(my_yaml_file))
         ```
     """
 
