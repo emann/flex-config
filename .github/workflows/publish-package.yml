@@ -17,7 +17,7 @@ jobs:
     with:
       module: flex_config
       private-package-repo-url: "https://pypi.fury.io/triaxtec/"
-      start-services-with-docker-compose: true
+      start-services-with-docker-compose: false
 
     secrets:
       private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
@@ -25,9 +25,3 @@ jobs:
   publish:
     needs: run-checks-and-test
     uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v2
-    with:
-      private-package-repo-url: "https://pypi.fury.io/triaxtec/"
-
-    secrets:
-      private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
-      private-package-repo-push-token: ${{ secrets.GEMFURY_PUSH_TOKEN }}

@@ -20,7 +20,7 @@ jobs:
     with:
       module: flex_config
       private-package-repo-url: "https://pypi.fury.io/triaxtec/"
-      start-services-with-docker-compose: true
+      start-services-with-docker-compose: false
 
     secrets:
       private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
