@@ -46,6 +46,7 @@ markdown-include = "^0.5.1"
 mkdocstrings = "^0.11.0"
 flake8 = "^3.8.4"
 autoflake = "^1.4"
+boto3 = "^1.13.1"
 
 [tool.taskipy.tasks]
 check = """

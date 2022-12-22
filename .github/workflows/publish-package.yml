@@ -1,0 +1,33 @@
+name: Publish Python Package
+
+# Cancels previous runs of this workflow in this branch
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+on:
+  push:
+    tags:
+      - v.*
+
+
+jobs:
+  run-checks-and-test:
+    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v2
+    with:
+      module: flex_config
+      private-package-repo-url: "https://pypi.fury.io/triaxtec/"
+      start-services-with-docker-compose: true
+
+    secrets:
+      private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
+
+  publish:
+    needs: run-checks-and-test
+    uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v2
+    with:
+      private-package-repo-url: "https://pypi.fury.io/triaxtec/"
+
+    secrets:
+      private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
+      private-package-repo-push-token: ${{ secrets.GEMFURY_PUSH_TOKEN }}

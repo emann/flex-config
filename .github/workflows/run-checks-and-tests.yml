@@ -1,0 +1,26 @@
+name: Run Checks and Tests
+
+# Cancels previous runs of this workflow in this branch
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - '**'
+    # Tags don't need to be tested a second time
+    tags-ignore:
+      - '**'
+
+jobs:
+  run-checks-and-test:
+    name: Run Checks and Tests
+    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v2
+    with:
+      module: flex_config
+      private-package-repo-url: "https://pypi.fury.io/triaxtec/"
+      start-services-with-docker-compose: true
+
+    secrets:
+      private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}

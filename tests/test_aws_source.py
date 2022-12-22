@@ -36,7 +36,14 @@ def test_to_dict(mocker):
             "Parameters": [{"Name": "/path/a/val", "Value": 1}, {"Name": "/path/a/b/c", "Value": "c"}],
             "NextToken": "yes",
         },
-        {"Parameters": [{"Name": "/path/a/b/d", "Value": "d"}, {"Name": "/path/e", "Value": 4}]},
+        {
+            "Parameters": [
+                {"Name": "/path/a/b/d", "Value": "d"},
+                {"Name": "/path/e", "Value": 4},
+                {"Name": "/path/list", "Value": "[1,2,3]"},
+                {"Name": "/path/dict", "Value": '{"a":1, "b":2}'},
+            ]
+        },
     ]
     iterator = iter(responses)
 
@@ -47,7 +54,12 @@ def test_to_dict(mocker):
 
     awss = AWSSource("path")
 
-    assert awss.to_dict() == {"a": {"b": {"c": "c", "d": "d"}, "val": 1}, "e": 4}
+    assert awss.to_dict() == {
+        "a": {"b": {"c": "c", "d": "d"}, "val": 1},
+        "e": 4,
+        "list": [1, 2, 3],
+        "dict": {"a": 1, "b": 2},
+    }
 
 
 def test_items(mocker):
