@@ -7,8 +7,8 @@ concurrency:
 
 on:
   push:
-    branches:
-      - '**'
+    branches-ignore:
+      - 'develop'
     # Tags don't need to be tested a second time
     tags-ignore:
       - '**'
