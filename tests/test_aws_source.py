@@ -42,6 +42,7 @@ def test_to_dict(mocker):
                 {"Name": "/path/e", "Value": 4},
                 {"Name": "/path/list", "Value": "[1,2,3]"},
                 {"Name": "/path/dict", "Value": '{"a":1, "b":2}'},
+                {"Name": "/path/bad_json", "Value": '{"a,1, "b":2}'},
             ]
         },
     ]
@@ -59,6 +60,7 @@ def test_to_dict(mocker):
         "e": 4,
         "list": [1, 2, 3],
         "dict": {"a": 1, "b": 2},
+        "bad_json": '{"a,1, "b":2}',
     }
 
 
