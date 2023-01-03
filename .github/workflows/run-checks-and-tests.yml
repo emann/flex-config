@@ -19,8 +19,4 @@ jobs:
     uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v2
     with:
       module: flex_config
-      private-package-repo-url: "https://pypi.fury.io/triaxtec/"
       start-services-with-docker-compose: false
-
-    secrets:
-      private-package-repo-username: ${{ secrets.GEMFURY_PULL_TOKEN }}
