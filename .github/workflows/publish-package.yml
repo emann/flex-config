@@ -21,7 +21,5 @@ jobs:
   publish:
     needs: run-checks-and-test
     uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v2
-    with:
-      private-package-repo-url: NOT_SPECIFIED
     secrets:
       private-package-repo-push-token: ${{ secrets.PYPI_TOKEN }}
