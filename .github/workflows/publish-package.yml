@@ -1,0 +1,25 @@
+name: Publish Python Package
+
+# Cancels previous runs of this workflow in this branch
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+on:
+  push:
+    tags:
+      - v.*
+
+
+jobs:
+  run-checks-and-test:
+    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v2
+    with:
+      module: flex_config
+      start-services-with-docker-compose: false
+
+  publish:
+    needs: run-checks-and-test
+    uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v2
+    secrets:
+      private-package-repo-push-token: ${{ secrets.PYPI_TOKEN }}

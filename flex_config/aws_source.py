@@ -1,3 +1,4 @@
+import json
 from typing import Any, Dict, Iterable, Tuple
 
 from .config_source import ConfigSource
@@ -50,9 +51,15 @@ class AWSSource(ConfigSource):
 
             for param in result["Parameters"]:
                 path = param["Name"].replace(f"/{self.path}/", "")  # Don't repeat SSM path in key
-                param_dict = insert_value_at_nested_key(
-                    dest_dict=param_dict, subkey_path=path.split("/"), value=param["Value"]
-                )
+
+                value = param["Value"]
+                if isinstance(value, str) and (value.startswith("{") or value.startswith("[")):
+                    try:
+                        value = json.loads(value)
+                    except json.JSONDecodeError:
+                        pass
+
+                param_dict = insert_value_at_nested_key(dest_dict=param_dict, subkey_path=path.split("/"), value=value)
 
             kwargs["NextToken"] = result.get("NextToken")
             if kwargs["NextToken"] is None:  # That's the last of the values
