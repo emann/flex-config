@@ -8,6 +8,6 @@ def test__load_file(mocker):
     load_json = mocker.patch("json.load", return_value=data)
 
     mocked_file = mocker.Mock()
-    ys = JSONSource(Path("supercoolpath"))
-    assert ys._load_file(mocked_file) == data
+    json_source = JSONSource(Path("supercoolpath"))
+    assert json_source._load_file(mocked_file) == data
     load_json.assert_called_once_with(mocked_file)

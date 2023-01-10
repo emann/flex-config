@@ -4,34 +4,34 @@ from flex_config import _compile_sources, _merge_sources, construct_config
 
 
 def test__merge_sources():
-    d1 = {"fruits": ["apple", "banana", "mango"], "nested": {"dont": "touch", "change": "me"}, "number": 7}
-    d1_copy = d1.copy()
+    dict_1 = {"fruits": ["apple", "banana", "mango"], "nested": {"dont": "touch", "change": "me"}, "number": 7}
+    dict_1_copy = dict_1.copy()
 
-    d2 = {"fruits": ["mango", "guava"], "nested": {"change": "this one", "anew": "key"}, "state": "CT"}
-    d2_copy = d2.copy()
+    dict_2 = {"fruits": ["mango", "guava"], "nested": {"change": "this one", "anew": "key"}, "state": "CT"}
+    dict_2_copy = dict_2.copy()
 
-    c = {}
-    _merge_sources(c, d1)
-    assert c == d1
-    assert not c is d1
+    config = {}
+    _merge_sources(config, dict_1)
+    assert config == dict_1
+    assert config is not dict_1
 
-    _merge_sources(c, d2)
-    assert c == {
+    _merge_sources(config, dict_2)
+    assert config == {
         "fruits": ["mango", "guava"],
         "nested": {"dont": "touch", "change": "this one", "anew": "key"},
         "number": 7,
         "state": "CT",
     }
     # Check we didn't accidentally alter the original sources
-    assert d1 == d1_copy
-    assert d2 == d2_copy
+    assert dict_1 == dict_1_copy
+    assert dict_2 == dict_2_copy
 
 
 def test__compile_sources(mocker):
-    s1 = {"key": "val"}
-    s2 = {"other": "stuff"}
-    s3 = {"super": "unique"}
-    s4 = mocker.Mock(return_value={"dynamic": "source1"})
+    source_1 = {"key": "val"}
+    source_2 = {"other": "stuff"}
+    source_3 = {"super": "unique"}
+    source_4 = mocker.Mock(return_value={"dynamic": "source1"})
 
     def _mock_merge_sources(dest, source):
         dest = dest.copy()
@@ -40,20 +40,20 @@ def test__compile_sources(mocker):
 
     mocker.patch("flex_config._merge_sources", _mock_merge_sources)
 
-    assert _compile_sources(s1) == s1
+    assert _compile_sources(source_1) == source_1
 
-    assert _compile_sources([s1, s2, s3, s4]) == {
+    assert _compile_sources([source_1, source_2, source_3, source_4]) == {
         "key": "val",
         "other": "stuff",
         "super": "unique",
         "dynamic": "source1",
     }
-    expected_s4_param = {
+    expected_source_4_param = {
         "key": "val",
         "other": "stuff",
         "super": "unique",
     }
-    s4.assert_called_with(expected_s4_param)
+    source_4.assert_called_with(expected_source_4_param)
 
 
 def test_construct_config(mocker):
