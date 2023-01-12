@@ -1,5 +1,5 @@
 __all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource", "TOMLSource", "JSONSource"]
-from typing import Any, Callable, Dict, Sequence, Type, TypeVar, Union, cast
+from typing import Any, Callable, Dict, Iterable, Sequence, Type, TypeVar, Union, cast
 
 from pydantic import BaseModel as ConfigSchema
 
@@ -8,7 +8,7 @@ from .config_source import ConfigSource
 from .env_source import EnvSource
 from .file_sources import JSONSource, TOMLSource, YAMLSource
 
-_SourceTypes = Union[ConfigSource, Callable[[Dict[str, Any]], ConfigSource]]
+_SourceTypes = Union[ConfigSource, Callable[[Dict[str, Any]], Union[ConfigSource, Sequence[ConfigSource]]]]
 
 
 def _merge_sources(dest: Dict[str, Any], source: ConfigSource) -> Dict[str, Any]:
@@ -32,8 +32,19 @@ def _compile_sources(sources: Union[Sequence[_SourceTypes], _SourceTypes]) -> Di
     compiled: Dict[str, Any] = {}
     for source in sources:
         if callable(source):
-            source = source(compiled)  # Pass what we have parsed so far to the function
-        compiled = _merge_sources(dest=compiled, source=source)
+            # This is a function that returns an iterable of sources
+            source_func_return_val = source(compiled)  # Pass what we have parsed so far to the function
+
+            if isinstance(source_func_return_val, Sequence):
+                # Source generator returned an iterable of sources, go through and merge each one
+                for generated_source in source_func_return_val:
+                    compiled = _merge_sources(dest=compiled, source=generated_source)
+            else:
+                # Source generator returned a single source
+                compiled = _merge_sources(dest=compiled, source=source_func_return_val)
+        else:
+            compiled = _merge_sources(dest=compiled, source=source)
+
     return compiled
 
 

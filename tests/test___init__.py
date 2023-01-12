@@ -32,28 +32,41 @@ def test__compile_sources(mocker):
     source_2 = {"other": "stuff"}
     source_3 = {"super": "unique"}
     source_4 = mocker.Mock(return_value={"dynamic": "source1"})
+    source_5 = mocker.Mock(return_value=[{"l1": "nice"}, {"l2": "source"}, {"l3": "bro"}])
 
     def _mock_merge_sources(dest, source):
-        dest = dest.copy()
-        dest.update(source)
-        return dest
+        dest_copy = dest.copy()
+        dest_copy.update(source)
+        return dest_copy
 
     mocker.patch("flex_config._merge_sources", _mock_merge_sources)
 
     assert _compile_sources(source_1) == source_1
 
-    assert _compile_sources([source_1, source_2, source_3, source_4]) == {
+    assert _compile_sources([source_1, source_2, source_3, source_4, source_5]) == {
         "key": "val",
         "other": "stuff",
         "super": "unique",
         "dynamic": "source1",
+        "l1": "nice",
+        "l2": "source",
+        "l3": "bro",
     }
+
     expected_source_4_param = {
         "key": "val",
         "other": "stuff",
         "super": "unique",
     }
     source_4.assert_called_with(expected_source_4_param)
+
+    expected_source_5_param = {
+        "key": "val",
+        "other": "stuff",
+        "super": "unique",
+        "dynamic": "source1",
+    }
+    source_5.assert_called_with(expected_source_5_param)
 
 
 def test_construct_config(mocker):
