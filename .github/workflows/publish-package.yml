@@ -13,13 +13,13 @@ on:
 
 jobs:
   run-checks-and-test:
-    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v2
+    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v3
     with:
       module: flex_config
       start-services-with-docker-compose: false
 
   publish:
     needs: run-checks-and-test
-    uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v2
+    uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v3
     secrets:
       private-package-repo-push-token: ${{ secrets.PYPI_TOKEN }}

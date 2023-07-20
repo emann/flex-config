@@ -1,5 +1,4 @@
 # Flex Config
-[![triaxtec](https://circleci.com/gh/triaxtec/flex-config.svg?style=svg)](https://app.circleci.com/pipelines/github/triaxtec/flex-config?branch=master)
 [![codecov](https://codecov.io/gh/triaxtec/flex-config/branch/master/graph/badge.svg?token=3utvPfZSLB)](https://codecov.io/gh/triaxtec/flex-config)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Generic badge](https://img.shields.io/badge/type_checked-mypy-informational.svg)](https://mypy.readthedocs.io/en/stable/introduction.html)
