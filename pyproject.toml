@@ -53,8 +53,8 @@ all = ["boto3", "pyyaml", "toml"]
 
 [tool.taskipy.tasks]
 check = "task security && task style && task types && task lint && task test"
-security = """poetry export -f requirements.txt | poetry run safety check --bare --stdin"""
-style = """ruff format ."""
+security = "poetry export -f requirements.txt | poetry run safety check --bare --stdin"
+style = "ruff format ."
 types = "mypy flex_config"
 lint = "ruff check . --fix"
 test = "pytest --cov=flex_config --cov-report term-missing"

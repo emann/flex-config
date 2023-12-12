@@ -16,7 +16,7 @@ on:
 jobs:
   run-checks-and-test:
     name: Run Checks and Tests
-    uses: triaxtec/github-actions/.github/workflows/python-run-checks-and-tests.yml@v3
+    uses: emann/github-actions/.github/workflows/python-run-checks-and-tests.yml@v1
     with:
       module: flex_config
       start-services-with-docker-compose: false
