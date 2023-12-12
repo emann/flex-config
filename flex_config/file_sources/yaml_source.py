@@ -1,3 +1,5 @@
+__all__ = ["YAMLSource"]
+
 from typing import Any, Dict, TextIO
 
 from .file_source import FileSource
@@ -32,8 +34,7 @@ class YAMLSource(FileSource):
     """
 
     def _load_file(self, file: TextIO) -> Dict[str, Any]:
-        """ Loads and parses the YAML file """
+        """Loads and parses the YAML file"""
         import yaml
 
-        config_dict = yaml.safe_load(file)
-        return config_dict
+        return yaml.safe_load(file)

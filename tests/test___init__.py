@@ -1,6 +1,6 @@
 import pytest
 
-from flex_config import _compile_sources, _merge_sources, construct_config
+from flex_config import _compile_sources, _merge_sources, construct_config, ConfigSchema
 
 
 def test__merge_sources():
@@ -69,16 +69,22 @@ def test__compile_sources(mocker):
     source_5.assert_called_with(expected_source_5_param)
 
 
+class MyConfig(ConfigSchema):
+    a: int
+    b: str
+
+
 def test_construct_config(mocker):
-    sources = [{}, {}, {}]
+    sources = [{"a": 1}, {"b": "two"}, {}]
+    compiled_sources = {"a": 1, "b": "two"}
     mocker.patch("flex_config.issubclass", return_value=False)
     with pytest.raises(TypeError):
-        construct_config(config_schema={}, sources=sources)
+        construct_config(config_schema=MyConfig, sources=sources)
 
-    compile_sources = mocker.patch("flex_config._compile_sources", return_value={"compiled": "sources"})
+    compile_sources = mocker.patch("flex_config._compile_sources", return_value=compiled_sources)
     mocker.patch("flex_config.issubclass", return_value=True)
-    config_schema = mocker.Mock()
 
-    construct_config(config_schema=config_schema, sources=sources)
+    config = construct_config(config_schema=MyConfig, sources=sources)
     compile_sources.assert_called_with(sources=sources)
-    config_schema.assert_called_with(**{"compiled": "sources"})
+
+    assert config == MyConfig(**compiled_sources)

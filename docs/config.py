@@ -39,7 +39,7 @@ yaml_path = Path.cwd() / "config.yml"
 
 
 def get_config(override: Dict[str, Any] = None) -> Config:
-    """ Get the app config for this app """
+    """Get the app config for this app"""
     global _app_config
 
     if _app_config:

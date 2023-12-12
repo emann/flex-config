@@ -41,7 +41,7 @@ class AWSSource(ConfigSource):
         self.path = path
 
     def to_dict(self) -> Dict[str, Any]:
-        """ Returns a generator for getting all path, value pairs """
+        """Returns a generator for getting all path, value pairs"""
         kwargs: Dict[str, Any] = {}
         param_dict: Dict[str, Any] = {}
         while True:
@@ -67,5 +67,5 @@ class AWSSource(ConfigSource):
         return param_dict
 
     def items(self) -> Iterable[Tuple[str, Any]]:
-        """ Returns a generator for getting all path, value pairs """
+        """Returns a generator for getting all path, value pairs"""
         return self.to_dict().items()

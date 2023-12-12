@@ -1,4 +1,6 @@
-from typing import Any, Dict, TextIO, cast
+__all__ = ["TOMLSource"]
+
+from typing import Any, Dict, TextIO
 
 from .file_source import FileSource
 
@@ -33,8 +35,7 @@ class TOMLSource(FileSource):
     """
 
     def _load_file(self, file: TextIO) -> Dict[str, Any]:
-        """ Loads and parses the TOML file """
+        """Loads and parses the TOML file"""
         import toml
 
-        config_dict = toml.load(file)
-        return cast(Dict[str, Any], config_dict)
+        return toml.load(file)

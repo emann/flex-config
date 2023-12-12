@@ -1,5 +1,14 @@
-__all__ = ["ConfigSchema", "ConfigSource", "AWSSource", "EnvSource", "YAMLSource", "TOMLSource", "JSONSource"]
-from typing import Any, Callable, Dict, Iterable, Sequence, Type, TypeVar, Union, cast
+__all__ = [
+    "ConfigSchema",
+    "ConfigSource",
+    "AWSSource",
+    "EnvSource",
+    "YAMLSource",
+    "TOMLSource",
+    "JSONSource",
+    "construct_config",
+]
+from typing import Any, Callable, Dict, Sequence, Type, TypeVar, Union, cast
 
 from pydantic import BaseModel as ConfigSchema
 

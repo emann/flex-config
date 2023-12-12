@@ -8,4 +8,4 @@ class ConfigSource(Protocol):
     """
 
     def items(self) -> Iterable[Tuple[str, Any]]:
-        """ A function to getting key, value pairs to store in the FlexConfig """
+        """A function to getting key, value pairs to store in the FlexConfig"""

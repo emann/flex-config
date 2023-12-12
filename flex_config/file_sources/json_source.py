@@ -1,3 +1,4 @@
+__all__ = ["JSONSource"]
 from typing import Any, Dict, TextIO
 
 from .file_source import FileSource
@@ -27,8 +28,7 @@ class JSONSource(FileSource):
     """
 
     def _load_file(self, file: TextIO) -> Dict[str, Any]:
-        """ Loads and parses the json file """
+        """Loads and parses the json file"""
         import json
 
-        config_dict = json.load(file)
-        return config_dict
+        return json.load(file)

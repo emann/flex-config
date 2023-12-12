@@ -38,7 +38,7 @@ class EnvSource(ConfigSource):
         self.separator = separator
 
     def to_dict(self) -> Dict[str, Any]:
-        """ Returns a generator for getting all key, value pairs """
+        """Returns a generator for getting all key, value pairs"""
         param_dict: Dict[str, Any] = {}
         for key, value in os.environ.items():
             if not key.startswith(self.prefix):
@@ -50,5 +50,5 @@ class EnvSource(ConfigSource):
         return param_dict
 
     def items(self) -> Iterable[Tuple[str, Any]]:
-        """ Returns a generator for getting all key, value pairs """
+        """Returns a generator for getting all key, value pairs"""
         return self.to_dict().items()

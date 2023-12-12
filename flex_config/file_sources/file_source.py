@@ -27,11 +27,11 @@ class FileSource(ConfigSource, ABC):
 
     @abstractmethod
     def _load_file(self, file: TextIO) -> Dict[str, Any]:
-        """ Loads/parses the file """
+        """Loads/parses the file"""
         raise NotImplementedError  # pragma: no cover
 
     def items(self) -> Iterable[Tuple[str, Any]]:
-        """ Returns a generator for getting all path, value pairs """
+        """Returns a generator for getting all path, value pairs"""
         if not self.path.exists():
             return []
 
