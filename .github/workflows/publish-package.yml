@@ -17,9 +17,12 @@ jobs:
     with:
       module: flex_config
       start-services-with-docker-compose: false
+      python-version: "3.10"
 
   publish:
     needs: run-checks-and-test
     uses: triaxtec/github-actions/.github/workflows/python-publish-package.yml@v3
+    with:
+      python-version: "3.10"
     secrets:
       private-package-repo-push-token: ${{ secrets.PYPI_TOKEN }}
